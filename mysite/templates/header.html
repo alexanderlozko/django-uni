@@ -18,6 +18,14 @@
 						<a href="tel:+23-345-67890">Позвоните нам: <span>+380507444709</span></a>
 						<a href="mailto:ocenka_2016@ukr.net" ><i class="fa fa-envelope mr-2"></i><span>ocenka_2016@ukr.net</span></a>
 					</div>
+					<div class="header-top-info">
+					{% if user.is_authenticated %}
+					 <span>User: {{ user.get_username }}</span>
+					 <span><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></span>
+				   {% else %}
+					 <span><a href="{% url 'login'%}?next={{request.path}}">Login</a></span>
+				   {% endif %}
+					</div>
 				</div>
 			</div>
 		</div>

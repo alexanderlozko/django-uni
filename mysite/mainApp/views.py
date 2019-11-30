@@ -8,8 +8,9 @@ from .models import Comment, BackCall, Order
 
 def index(request):
     comments = Comment.objects.filter(published=True).order_by('-datetime')
+    amount = Comment.objects.filter(published=True).count()
 
-    return render(request, 'index.html', {'comments':comments})
+    return render(request, 'index.html', {'comments':comments, 'amount': amount})
 
 def aboutus(request):
     return render(request, 'about.html')
@@ -37,6 +38,8 @@ def comment(request):
         form = CommentForm()
     return render(request, 'comment.html', {'form': form, 'sent':sent})
 
+def profile(request):
+    return render(request, 'registration/profile.html')
 
 def service(request):
     return render(request, 'service.html')
