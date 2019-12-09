@@ -74,8 +74,10 @@
 					<div class="about-content">
 						<h4 class="mb-3 position-relative">ТЕКСТ</h4>
 						<p class="mb-5">Мы предоставляем консалтинговые услуги в области МСФО и управленческой отчетности, помогая компаниям достичь самого высокого уровня. Мы оптимизируем бизнес-процессы, делая их проще.</p>
-
-						<a href="#" class="btn btn-main btn-round-full">Заказать оценку онлайн</a>
+						<div id="more-text-here1"></div>
+						<div id="more-text-here2"></div>
+						<div id="more-text-here3"></div>
+						<a class="btn btn-main btn-round-full" id="ajax-text-me">Показать больше</a>
 					</div>
 				</div>
 			</div>
@@ -275,6 +277,27 @@
 {% endif %}
 
 {% include 'footer.html' %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ajax-text-me").click(function() {
+            $.ajax({
+                type: 'GET',
+                async: true,
+                url: '/ajax/',
+                data: "param1=value1&param2=value2&param3=value3;",
+                success: function(data) {
+                    $("#more-text-here1").append(data['first-text']);
+                    $("#more-text-here2").append(data['second-text']);
+                    $("#more-text-here3").append(data['third-text']);
+
+                },
+                dataType: 'json',
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -22,6 +22,9 @@ class Comment(models.Model):
 class Category(models.Model):
     category = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.category
+
 def user_directory_path(email, filename):
     return 'user_{0}/{1}'.format(email, filename)
 
