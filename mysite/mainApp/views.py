@@ -52,12 +52,13 @@ def add_comment(request):
         raise Http404
 
 class CommentsDetail(generics.RetrieveAPIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'comments.html'
+     renderer_classes = [TemplateHTMLRenderer]
+     template_name = 'comments.html'
 
-    def get(self, request):
-        queryset = Comment.objects.all()[::1]
-        return Response({'comments': queryset})
+     def get(self, request):
+         queryset = Comment.objects.filter(published=True)[::1]
+         return Response({'comments': queryset})
+
 
 def aboutus(request):
     return render(request, 'about.html')

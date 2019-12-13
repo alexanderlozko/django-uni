@@ -179,21 +179,8 @@
 	</div>
 
 	<div class="container">
-		<div class="row testimonial-wrap">
-			{% for comment in comments %}
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
+		<div class="row testimonial-wrap" id="comments_data">
 
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">{{ comment.comment }}</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">{{ comment.author }}</h5>
-						<p>{{ comment.datetime }}</p>
-					</div>
-				</div>
-			</div>
-			{% endfor %}
 		</div>
 		<div class="block text-center">
 			<a href="{% url 'comment' %}" target="_blank" class="btn btn-main animated fadeInUp btn-round-full">Оставить отзыв</a>
@@ -201,6 +188,7 @@
         <div class="block text-center">
 			<span>Всего коментариев: {{ amount }}</span>
 		</div>
+
 	</div>
 </section>
 
@@ -279,6 +267,8 @@
 {% include 'footer.html' %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#ajax-text-me").click(function() {
@@ -298,6 +288,40 @@
         });
     });
 </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+
+<script>
+		const url = 'http://127.0.0.1:8001/api/comments/';
+		let div = document.querySelector('#comments_data')
+        fetch(url)
+         .then((res)=>res.json())
+         .then((res)=>{
+            res.comments.forEach((comment)=>{
+                let comment_div = document.createElement('div')
+                    comment_div.innerHTML = `
+
+                    <div class="testimonial-item position-relative">
+                        <i class="ti-quote-left text-color"></i>
+
+                        <div class="testimonial-item-content">
+                            <p class="testimonial-text">${ comment.comment }</p>
+
+                            <div class="testimonial-author">
+                                <h5 class="mb-0 text-capitalize">${ comment.author }</h5>
+
+                            </div>
+                        </div>
+                    </div>
+			`;
+                    div.appendChild(comment_div)
+             })
+
+         })
+
+	</script>
 
 </body>
 </html>
