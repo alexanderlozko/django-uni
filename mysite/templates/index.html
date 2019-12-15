@@ -14,8 +14,7 @@
 		<div class="row">
 			<div class="col-lg-9 col-md-10">
 				<div class="block">
-					<span class="d-block mb-3 text-white text-capitalize">Эксперт оценка</span>
-					<h1 class="animated fadeInUp mb-5">Здесь должна быть<br>очень умная цитата!</h1>
+					<h1 class="animated fadeInUp mb-5">Эксперт оценка</h1>
 					<a href="{% url 'order-online' %}" target="_blank" class="btn btn-main animated fadeInUp btn-round-full" >Заказать оценку онлайн<i class="btn-icon fa fa-angle-right ml-2"></i></a>
 				</div>
 			</div>
@@ -35,25 +34,25 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-6 col-12">
-				<div class="intro-item mb-5 mb-lg-0">
-					<i class="ti-desktop color-one"></i>
-					<h4 class="mt-4 mb-3">Modern & Responsive design</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ducimus.</p>
-				</div>
-			</div>
 			<div class="col-lg-4 col-md-6">
 				<div class="intro-item mb-5 mb-lg-0">
 					<i class="ti-medall color-one"></i>
-					<h4 class="mt-4 mb-3">Awarded licensed company</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ducimus.</p>
+					<h4 class="mt-4 mb-3">Работаем с 2015 года</h4>
+					<p>Наша компания занимается оценкой с 2015 года.</p>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="intro-item mb-5 mb-lg-0">
+					<i class="ti-star color-one"></i>
+					<h4 class="mt-4 mb-3">Безупречная репутация</h4>
+					<p>За все годы работы не было ни единого негативного отзыва</p>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-6">
 				<div class="intro-item">
 					<i class="ti-layers-alt color-one"></i>
-					<h4 class="mt-4 mb-3">Build your website Professionally</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ducimus.</p>
+					<h4 class="mt-4 mb-3">Делаем все виды оценок</h4>
+					<p>Подробный список видов оценки можете найти в разделе "Услуги".</p>
 				</div>
 			</div>
 		</div>
@@ -69,14 +68,14 @@
 		<div class="row">
 			<div class="col-lg-6 offset-lg-6 offset-md-0">
 				<div class="about-item ">
-					<span class="h6 text-color">Эксперт оценка</span>
+					<span class="h6 text-color ">Эксперт оценка</span>
 					<h2 class="mt-3 mb-4 position-relative content-title">Кратко о компании</h2>
+					<hr>
 					<div class="about-content">
-						<h4 class="mb-3 position-relative">ТЕКСТ</h4>
-						<p class="mb-5">Мы предоставляем консалтинговые услуги в области МСФО и управленческой отчетности, помогая компаниям достичь самого высокого уровня. Мы оптимизируем бизнес-процессы, делая их проще.</p>
-						<div id="more-text-here1"></div>
-						<div id="more-text-here2"></div>
-						<div id="more-text-here3"></div>
+						<h4 class="mb-3 position-relative">Эксперт оценка</h4>
+						<p class="mb-5"> «Эксперт оценка» — динамично развивающаяся компания которая занимается предоставлением услуг по оценке. Опытные специалисты нашей компании имеют все соответствующие лицензии и сертификаты.</p>
+						<p class="mb-5" id="more-text-here1"></p>
+						<p class="mb-5" id="more-text-here2"></p>
 						<a class="btn btn-main btn-round-full" id="ajax-text-me">Показать больше</a>
 					</div>
 				</div>
@@ -93,8 +92,9 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-7 text-center">
 				<div class="section-title">
-					<span class="h6 text-color">Наши преимущества</span>
-					<h2 class="mt-3 content-title ">Преимущества </h2>
+					<span class="h6 text-color ">Эксперт оценка</span>
+					<h2 class="mt-3 content-title ">Наши преимущества </h2>
+					<hr>
 				</div>
 			</div>
 		</div>
@@ -177,22 +177,31 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="container">
-		<div class="row testimonial-wrap" id="comments_data">
+		<div class="row testimonial-wrap">
+			{% for comment in comments %}
+			<div class="testimonial-item position-relative">
+				<i class="ti-quote-left text-color"></i>
 
-		</div>
-		<div class="block text-center">
-			<a href="{% url 'comment' %}" target="_blank" class="btn btn-main animated fadeInUp btn-round-full">Оставить отзыв</a>
-		</div>
-        <div class="block text-center">
-			<span>Всего коментариев: {{ amount }}</span>
-		</div>
+				<div class="testimonial-item-content">
+					<p class="testimonial-text">{{ comment.comment }}</p>
 
+					<div class="testimonial-author">
+						<h5 class="mb-0 text-capitalize">{{ comment.author }}</h5>
+						<p>{{ comment.datetime }}</p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="block text-center">
+		<a href="{% url 'comment' %}" target="_blank" class="btn btn-main animated fadeInUp btn-round-full">Оставить отзыв</a>
+	</div>
+	<div class="block text-center">
+		<span>Всего коментариев: {{ amount }}</span>
 	</div>
 </section>
-
-
 
 
 {% if user.is_authenticated %}
@@ -267,8 +276,6 @@
 {% include 'footer.html' %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
-
 <script type="text/javascript">
     $(document).ready(function () {
         $("#ajax-text-me").click(function() {
@@ -276,11 +283,10 @@
                 type: 'GET',
                 async: true,
                 url: '/ajax/',
-                data: "param1=value1&param2=value2&param3=value3;",
+                data: "param1=value1&param2=value2;",
                 success: function(data) {
                     $("#more-text-here1").append(data['first-text']);
                     $("#more-text-here2").append(data['second-text']);
-                    $("#more-text-here3").append(data['third-text']);
 
                 },
                 dataType: 'json',
@@ -288,40 +294,6 @@
         });
     });
 </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
-
-<script>
-		const url = 'http://127.0.0.1:8001/api/comments/';
-		let div = document.querySelector('#comments_data')
-        fetch(url)
-         .then((res)=>res.json())
-         .then((res)=>{
-            res.comments.forEach((comment)=>{
-                let comment_div = document.createElement('div')
-                    comment_div.innerHTML = `
-
-                    <div class="testimonial-item position-relative">
-                        <i class="ti-quote-left text-color"></i>
-
-                        <div class="testimonial-item-content">
-                            <p class="testimonial-text">${ comment.comment }</p>
-
-                            <div class="testimonial-author">
-                                <h5 class="mb-0 text-capitalize">${ comment.author }</h5>
-
-                            </div>
-                        </div>
-                    </div>
-			`;
-                    div.appendChild(comment_div)
-             })
-
-         })
-
-	</script>
 
 </body>
 </html>

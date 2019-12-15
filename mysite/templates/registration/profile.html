@@ -1,14 +1,55 @@
-{% extends "main.html" %}
+{% extends 'registration/base.html' %}
+
+{% block title %}Личный профиль{% endblock %}
+{% block title1 %}Личный профиль{% endblock %}
 
 {% block content %}
+<div class="block text-center">
+    {% if user.is_authenticated %}
+    <h3>Welcome, {{ user.get_username }}!</h3>
+    <hr>
+    <p>Ваш IP: <strong>{{ ip }}</strong></p>
+    <p>Вы находитесь в <strong>{{ country }}.</strong></p>
+    <hr>
+	<section class="section testimonial">
+		<div class="block text-center">
+			<span class="h1 text-color">Отзывы клиентов</span>
+			<p>Всего коментариев: {{ amount }}</p>
+		</div>
+		<div class="container">
+			<div class="row testimonial-wrap" id="comments_data">
+			</div>
+		</div>
+	</section>
+    {% else %}
+	<p>Чтобы получить доступ к админ-панели, нужно <a href="{% url 'login' %}"><strong>войти в аккаунт</strong></a>.</p>
+    {% endif %}
+</div>
 
-{% if user.is_authenticated %}
-<p>Добро пожаловать, {{ user.get_username }}! </p>
-<p> Ваш ip адресс <strong>{{ ip }}</strong>, и вероятно вы находитесь в <strong>{{ country }}</strong> прямо сейчас. </p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script>
+	const url = 'http://127.0.0.1:8001/api/comments/';
+	let div = document.querySelector('#comments_data')
+	fetch(url)
+	 .then((res)=>res.json())
+	 .then((res)=>{
+		res.comments.forEach((comment)=>{
+			let comment_div = document.createElement('div')
+				comment_div.innerHTML = `
+				<div class="block text-center">
 
-{% else %}
-<p>Войдите в аккаунт, чтобы продолжить.</p>
-<a href="{% url 'login' %}"></a>
-{% endif %}
+					<div class="testimonial-item-content">
+						<div class="testimonial-author">
+							<h5 class="mb-0 text-capitalize">Комментарий: <br>${ comment.comment }</h5>
+							<p><span>Автор: ${ comment.author }<br>Дата: ${ comment.datetime } <br> Опубликован: ${ comment.published }</span></p>
+						</div>
+					</div>
+				</div>
+		`;
+				div.appendChild(comment_div)
+		 })
+	 })
+</script>
 
 {% endblock %}

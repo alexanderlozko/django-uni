@@ -35,9 +35,7 @@
                  <form method="POST" action="">
                     <h3 class="text-md mb-4">Оставить заявку</h3>
                      {% csrf_token %}
-                    <div class="form-group-2 mb-4">
-                        {{ form.as_p }}
-                    </div>
+                     {{ form.as_p }}
                      <button class="btn btn-main" name="submit" type="submit">Оставить заявку</button>
                 </form>
                 {% endif %}

@@ -14,7 +14,7 @@ class Comment(models.Model):
     author = models.CharField(max_length=50)
     comment = models.TextField(max_length=50)
     published = models.BooleanField(default=False)
-    datetime = models.DateTimeField(auto_now_add=True)
+    datetime = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.comment
