@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Comment, BackCall, Category
+from .models import Comment, BackCall, Category, Order
 
 @admin.register(BackCall)
 class BackCallAdmin(admin.ModelAdmin):
@@ -18,3 +18,8 @@ class CommentAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('category',)
     search_fields = ('category',)
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('name','phone', 'email', 'message',)
+

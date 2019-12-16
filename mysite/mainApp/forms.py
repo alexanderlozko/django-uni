@@ -24,4 +24,4 @@ class BackCallForm(forms.ModelForm):
 class OrderOnlineForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('name', 'phone', 'email', 'category', 'message', 'files')
+        fields = ('name', 'phone', 'email',  'message')

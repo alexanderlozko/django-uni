@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 
@@ -13,12 +15,12 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <span class="text-white">About Us</span>
-          <h1 class="text-capitalize mb-4 text-lg">Our Company</h1>
+          <span class="text-white">О нас</span>
+          <h1 class="text-capitalize mb-4 text-lg">Наша компания</h1>
           <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+            <li class="list-inline-item"><a href="index.html" class="text-white">Главная</a></li>
             <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">About Us</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white-50">О нас</a></li>
           </ul>
         </div>
       </div>
@@ -33,16 +35,15 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
 				<div class="about-item pr-3 mb-5 mb-lg-0">
-					<span class="h6 text-color">What we are</span>
-					<h2 class="mt-3 mb-4 position-relative content-title">We are dynamic team of creative people</h2>
-					<p class="mb-5">We provide consulting services in the area of IFRS and management reporting, helping companies to reach their highest level. We optimize business processes, making them easier.</p>
-
-					<a href="#" class="btn btn-main btn-round-full">Get started</a>
+					<span class="h6 text-color">Кто мы</span>
+					<h2 class="mt-3 mb-4 position-relative content-title">«Эксперт оценка»</h2>
+					<p class="mb-5">Динамично развивающаяся компания которая занимается предоставлением услуг по оценке. Опытные специалисты нашей компании имеют все соответствующие лицензии и сертификаты.</p>
+					<a href="{% url 'contact' %}" class="btn btn-main btn-round-full">Заказать онлайн</a>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<div class="about-item-img">
-					<img src="images/about/home-7.jpg" alt="" class="img-fluid">
+					<img src="{% static 'images/about/home-7.jpg' %}" alt="" class="img-fluid">
 				</div>
 			</div>
 		</div>
@@ -84,21 +85,21 @@
 				<div class="counter-item text-center mb-5 mb-lg-0">
 					<i class="ti-check color-one text-md"></i>
 					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">1730</span> +</h3>
-					<p class="text-white-50">Project Done</p>
+					<p class="text-white-50">Сделанных работ</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="counter-item text-center mb-5 mb-lg-0">
 					<i class="ti-flag color-one text-md"></i>
-					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">125 </span>M </h3>
-					<p class="text-white-50">User Worldwide</p>
+					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">4 года</span></h3>
+					<p class="text-white-50">На рынке</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="counter-item text-center mb-5 mb-lg-0">
 					<i class="ti-layers color-one text-md"></i>
-					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">39</span></h3>
-					<p class="text-white-50">Availble Country</p>
+					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">5</span></h3>
+					<p class="text-white-50">Видов оценки</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6 col-sm-6">
@@ -119,8 +120,8 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-7 text-center">
 				<div class="section-title">
-					<span class="h6 text-color">Clients testimonial</span>
-					<h2 class="mt-3 content-title">Check what's our clients say about us</h2>
+					<span class="h6 text-color">Отзывы клиентов</span>
+					<h2 class="mt-3 content-title">Узнайте, что говорят о нас клиенты</h2>
 				</div>
 			</div>
 		</div>
@@ -128,18 +129,7 @@
 
 	<div class="container">
 		<div class="testimonial-wrap">
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
 
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">Quam maiores perspiciatis temporibus odio reiciendis error alias debitis atque consequuntur natus iusto recusandae numquam corrupti facilis blanditiis.</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">Thomas Johnson</h5>
-						<p>Excutive Director,themefisher</p>
-					</div>
-				</div>
-			</div>
 			<div class="testimonial-item position-relative">
 				<i class="ti-quote-left text-color"></i>
 
@@ -152,30 +142,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
 
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">Quam maiores perspiciatis temporibus odio reiciendis error alias debitis atque consequuntur natus iusto recusandae numquam corrupti.</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">James Watson</h5>
-						<p>Excutive Director,themefisher</p>
-					</div>
-				</div>
-			</div>
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
-
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">Consectetur adipisicing elit. Quam maiores perspiciatis temporibus odio reiciendis error alias debitis atque consequuntur natus iusto recusandae .</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">Mickel hussy</h5>
-						<p>Excutive Director,themefisher</p>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>

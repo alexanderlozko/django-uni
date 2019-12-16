@@ -32,9 +32,7 @@ class Order(models.Model):
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=13)
     email = models.EmailField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     message = models.TextField()
-    files = models.FileField(upload_to=user_directory_path)
 
     def __str__(self):
         return self.email

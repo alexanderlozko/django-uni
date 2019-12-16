@@ -35,8 +35,8 @@
 
 					<ul class="list-unstyled footer-menu lh-35">
 						<li><a href="{% url 'home' %}">Главная</a></li>
-						<li><a href="#">О нас</a></li>
-						<li><a href="#">Услуги</a></li>
+						<li><a href="{% url 'aboutus' %}">О нас</a></li>
+						<li><a href="{% url 'service' %}">Услуги</a></li>
 						<li><a href="{% url 'contact' %}">Контакты</a></li>
 					</ul>
 				</div>
@@ -83,9 +83,10 @@
 		</div>
 	</div>
 </footer>
-
-    </div>
-
+	</div>
+<div class="scrollup">
+  <i class="fa fa-chevron-up">11111</i>
+</div>
     <!--
     Essential Scripts
     =====================================-->
@@ -106,8 +107,21 @@
     <script src="{% static 'plugins/counterup/jquery.counterup.min.js' %}"></script>
 
  	<script src="{% static 'js/script.js' %}"></script>
-	<script
-	  src="https://code.jquery.com/jquery-3.4.1.min.js"
-	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	  crossorigin="anonymous"></script>
 
+	<script>
+	$(function() {
+	  $('.scrollup').click(function() {
+		$("html, body").animate({
+		  scrollTop:0
+		},1000);
+	  })
+	})
+	$(window).scroll(function() {
+	  if ($(this).scrollTop()>200) {
+		$('.scrollup').fadeIn();
+	  }
+	  else {
+		$('.scrollup').fadeOut();
+	  }
+	});
+	</script>

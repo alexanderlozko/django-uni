@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 import requests
 from django.contrib.auth import authenticate, login, logout
 from .forms import CommentForm, BackCallForm, LoginForm
-from .models import Comment
+from .models import Comment, Order, BackCall
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib import messages
@@ -99,3 +99,24 @@ def service(request):
 
 def order_online(request):
     return render(request, 'order_online.html')
+
+def order(request):
+    order = Order(name = request.POST['name'], phone = request.POST['phone'], email=request.POST['email'] , message = request.POST['message'] )
+    order.save()
+    return redirect('thanks')
+
+def backcall(request):
+    backcall = BackCall(name = request.POST['name'], phone = request.POST['phone'], email=request.POST['email'] , message = request.POST['message'] )
+    backcall.save()
+    return redirect('thanks')
+
+def leave_comment(request):
+    comment = Comment(author = request.POST['name'], comment = request.POST['message'])
+    comment.save()
+    return redirect('thanks_for_the_comment')
+
+def thanks_for_the_comment(request):
+    return render(request, 'thanks_for_the_comment.html')
+
+def thanks(request):
+    return render(request, 'thanks.html')

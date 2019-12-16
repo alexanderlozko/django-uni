@@ -1,0 +1,51 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="ru">
+  <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+
+  <meta http-equiv="refresh" content="4;URL={% url 'home' %}" />
+
+  <title>Эксперт оценка</title>
+
+   <link rel="shortcut icon" href="{% static '/images/logo.ico' %}" type="image/x-icon">
+
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+  <!-- Icon Font Css -->
+  <link rel="stylesheet" href="{% static 'plugins/themify/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/magnific-popup/dist/magnific-popup.css' %}">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+<div class="main-wrapper ">
+<!-- contact form start -->
+<section class="contact-form-wrap section">
+    <div class="container">
+        <div class="block text-center">
+        {% include 'registration/message.html' %}
+        <h2 class="mb-5 mt-2">Спасибо за оставленный отзыв.<br> В ближайшее время Ваш комментарий появится на сайте после проверки модератором.</h2>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
