@@ -5,15 +5,6 @@
 
 	'use strict';
 
-
-	$('.portfolio-single-slider').slick({
-		infinite: true,
-		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 2000
-
-	});
-
 	$('.clients-logo').slick({
 		infinite: true,
 		arrows: false,

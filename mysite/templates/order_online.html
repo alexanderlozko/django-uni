@@ -29,10 +29,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12">
-                 <form id="contact-form" class="contact__form" method="POST" action="{% url 'back-call' %}">
+                 <form id="contact-form" class="contact__form" method="POST" action="{% url 'backcall' %}">
 
                     {% csrf_token %}
-                    <span class="text-color">Отправить письмо</span>
+                    <span class="text-color">Эксперт оценка</span>
                     <h3 class="text-md mb-4">Заказать онлайн</h3>
                     <div class="form-group">
                         <input name="name" type="text" class="form-control" placeholder="Имя">
@@ -44,9 +44,9 @@
                         <input name="email" type="email" class="form-control" placeholder="Почта">
                     </div>
                     <div class="form-group-2 mb-4">
-                        <textarea name="message" class="form-control" rows="4" placeholder="Ваше письмо"></textarea>
+                        <textarea name="message" class="form-control" rows="4" placeholder="Подробно опишите Ваш заказ"></textarea>
                     </div>
-                    <button class="btn btn-main" name="submit" type="submit">Отправить письмо</button>
+                    <button class="btn btn-main" name="submit" type="submit">Заказать</button>
                 </form>
             </div>
 

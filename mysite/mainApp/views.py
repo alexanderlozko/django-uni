@@ -69,30 +69,14 @@ def add_ajax(request):
         raise Http404
 
 def aboutus(request):
-    return render(request, 'about.html')
+    comments = Comment.objects.filter(published=True)
+    return render(request, 'about.html', {'comments':comments})
 
 def contact(request):
-    sent = False
-    if request.method == 'POST':
-        form = BackCallForm(request.POST)
-        if form.is_valid():
-            sent = True
-            form.save()
-    else:
-        form = BackCallForm()
-    return render(request, 'contact.html', {'form': form, 'sent': sent})
+    return render(request, 'contact.html')
 
 def comment(request):
-    sent = False
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            sent = True
-            form.save()
-
-    else:
-        form = CommentForm()
-    return render(request, 'comment.html', {'form': form, 'sent':sent})
+    return render(request, 'comment.html')
 
 def service(request):
     return render(request, 'service.html')

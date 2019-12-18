@@ -38,7 +38,7 @@
 					<span class="h6 text-color">Кто мы</span>
 					<h2 class="mt-3 mb-4 position-relative content-title">«Эксперт оценка»</h2>
 					<p class="mb-5">Динамично развивающаяся компания которая занимается предоставлением услуг по оценке. Опытные специалисты нашей компании имеют все соответствующие лицензии и сертификаты.</p>
-					<a href="{% url 'contact' %}" class="btn btn-main btn-round-full">Заказать онлайн</a>
+					<a href="{% url 'order-online' %}" class="btn btn-main btn-round-full">Заказать онлайн</a>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
@@ -81,32 +81,25 @@
 <section class="section counter bg-counter">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3 col-md-6 col-sm-6">
+			<div class="col-lg-3">
 				<div class="counter-item text-center mb-5 mb-lg-0">
 					<i class="ti-check color-one text-md"></i>
 					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">1730</span> +</h3>
 					<p class="text-white-50">Сделанных работ</p>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
+			<div class="col-lg-3">
 				<div class="counter-item text-center mb-5 mb-lg-0">
 					<i class="ti-flag color-one text-md"></i>
 					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">4 года</span></h3>
 					<p class="text-white-50">На рынке</p>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
+			<div class="col-lg-3">
 				<div class="counter-item text-center mb-5 mb-lg-0">
 					<i class="ti-layers color-one text-md"></i>
 					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">5</span></h3>
 					<p class="text-white-50">Видов оценки</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="counter-item text-center">
-					<i class="ti-medall color-one  text-md"></i>
-					<h3 class="mt-2 mb-0 text-white"><span class="counter-stat font-weight-bold">14</span></h3>
-					<p class="text-white-50">Award Winner </p>
 				</div>
 			</div>
 		</div>
@@ -129,21 +122,24 @@
 
 	<div class="container">
 		<div class="testimonial-wrap">
-
+			{% for comment in comments %}
 			<div class="testimonial-item position-relative">
 				<i class="ti-quote-left text-color"></i>
 
 				<div class="testimonial-item-content">
-					<p class="testimonial-text">Consectetur adipisicing elit. Quam maiores perspiciatis temporibus odio reiciendis error alias debitis atque consequuntur natus iusto recusandae .</p>
+					<p class="testimonial-text">{{ comment.comment }}</p>
 
 					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">Mickel hussy</h5>
-						<p>Excutive Director,themefisher</p>
+						<h5 class="mb-0 text-capitalize">{{ comment.author }}</h5>
+						<p>{{ comment.datetime }}</p>
 					</div>
 				</div>
 			</div>
-
+			{% endfor %}
 		</div>
+	</div>
+	<div class="block text-center">
+		<a href="{% url 'comment' %}" target="_blank" class="btn btn-main animated fadeInUp btn-round-full">Оставить отзыв</a>
 	</div>
 </section>
 <!-- Section Testimonial End -->
