@@ -90,7 +90,7 @@ def order(request):
     return redirect('thanks')
 
 def backcall(request):
-    backcall = BackCall(name = request.POST.get('name', False), phone = request.POST.get('phone', False), email=request.POST.get('email', False) , message = request.POST.get('message', False) )
+    backcall = BackCall(name = request.POST['name'], phone = request.POST['phone'], email=request.POST['email'] , message = request.POST['message'])
     backcall.save()
     return redirect('thanks')
 
