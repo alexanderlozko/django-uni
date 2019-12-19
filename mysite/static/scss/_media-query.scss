@@ -1,4 +1,3 @@
-/*=== MEDIA QUERY ===*/
 @mixin mobile-xs{
   @media(max-width:400px){
     @content;

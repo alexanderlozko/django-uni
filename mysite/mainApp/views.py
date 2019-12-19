@@ -85,17 +85,17 @@ def order_online(request):
     return render(request, 'order_online.html')
 
 def order(request):
-    order = Order(name = request.POST['name'], phone = request.POST['phone'], email=request.POST['email'] , message = request.POST['message'] )
+    order = Order(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'] , message=request.POST['message'] )
     order.save()
     return redirect('thanks')
 
 def backcall(request):
-    backcall = BackCall(name = request.POST['name'], phone = request.POST['phone'], email=request.POST['email'] , message = request.POST['message'] )
+    backcall = BackCall(name = request.POST.get('name', False), phone = request.POST.get('phone', False), email=request.POST.get('email', False) , message = request.POST.get('message', False) )
     backcall.save()
     return redirect('thanks')
 
 def leave_comment(request):
-    comment = Comment(author = request.POST['name'], comment = request.POST['message'])
+    comment = Comment(author=request.POST['name'], comment=request.POST['message'])
     comment.save()
     return redirect('thanks_for_the_comment')
 

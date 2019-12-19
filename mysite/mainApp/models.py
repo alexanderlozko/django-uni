@@ -12,7 +12,7 @@ class BackCall(models.Model):
 
 class Comment(models.Model):
     author = models.CharField(max_length=50)
-    comment = models.TextField(max_length=50)
+    comment = models.TextField(max_length=100)
     published = models.BooleanField(default=False)
     datetime = models.DateField(auto_now_add=True)
 

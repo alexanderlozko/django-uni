@@ -6,16 +6,12 @@ from django.contrib import messages
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = ')i3#1*e!hu57*58ph6v2n8xon8x#1@eaz(&0(1(yycyd=p1#j4'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', ')i3#1*e!hu57*58ph6v2n8xon8x#1@eaz(&0(1(yycyd=p1#j4')
+SECRET_KEY = ')i3#1*e!hu57*58ph6v2n8xon8x#1@eaz(&0(1(yycyd=p1#j4'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+
+DEBUG = True
+
 
 ALLOWED_HOSTS = []
 INTERNAL_IPS = ['127.0.0.1',]
@@ -49,7 +45,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]

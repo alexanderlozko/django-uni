@@ -84,6 +84,10 @@
 	</div>
 </footer>
 	</div>
+<div class="scrollup">
+
+  <i class="fa fa-chevron-up"></i>
+</div>
     <!--
     Essential Scripts
     =====================================-->
@@ -104,19 +108,26 @@
     <script src="{% static 'plugins/counterup/jquery.counterup.min.js' %}"></script>
 
  	<script src="{% static 'js/script.js' %}"></script>
-
 	<script>
-	$(document).ready(function(){
-		$(window).scroll(function(){
-		if ($(this).scrollTop() > 100) {
-			$("#top").fadeIn();
-		} else {
-			$("#top").fadeOut();
-		}
-		});
-		$("#top").click(function(){
-			$("html, body").animate({ scrollTop: 0 }, 600);
-			return false;
-		});
+	$(function() {
+	  // при нажатии на кнопку scrollup
+	  $('.scrollup').click(function() {
+		// переместиться в верхнюю часть страницы
+		$("html, body").animate({
+		  scrollTop:0
+		},1000);
+	  })
+	})
+	// при прокрутке окна (window)
+	$(window).scroll(function() {
+	  // если пользователь прокрутил страницу более чем на 200px
+	  if ($(this).scrollTop()>200) {
+		// то сделать кнопку scrollup видимой
+		$('.scrollup').fadeIn();
+	  }
+	  // иначе скрыть кнопку scrollup
+	  else {
+		$('.scrollup').fadeOut();
+	  }
 	});
 	</script>

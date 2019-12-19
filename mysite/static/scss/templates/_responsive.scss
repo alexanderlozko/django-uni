@@ -1,6 +1,4 @@
 
-/*=== MEDIA QUERY ===*/
-
 @include mobile-xs{
    .header-top .header-top-info a {
       margin-left: 0px;
@@ -29,7 +27,7 @@
   }
 
   .p-5{
-    padding: 2rem !important;
+    padding: 2rem;
   }
   h2, .h2 {
       font-size: 1.3rem;
@@ -58,11 +56,6 @@
   }
   .blog-item-meta span{
     margin: 6px 0px;
-  }
-
-  .widget {
-      margin-bottom: 30px;
-      padding-bottom: 0px; 
   }
   
   .dropdown-menu{
@@ -99,7 +92,7 @@
   }
 
   .p-5{
-    padding: 2rem !important;
+    padding: 2rem ;
   }
   h2, .h2 {
       font-size: 1.3rem;
