@@ -5,7 +5,7 @@ class BackCall(models.Model):
     phone = models.CharField(max_length=13)
     email = models.EmailField()
     message = models.TextField(default=None)
-    datetime = models.DateTimeField(auto_now_add=True)
+    datetime = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.phone
@@ -23,7 +23,7 @@ class Comment(models.Model):
     datetime = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.comment
+        return self.message
 
 def user_directory_path(email, filename):
     return 'user_{0}/{1}'.format(email, filename)

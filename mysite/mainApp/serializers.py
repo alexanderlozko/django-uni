@@ -1,7 +1,8 @@
 from rest_framework import serializers
 
-class CommentSerializer(serializers.Serializer):
-    author = serializers.CharField(max_length=50)
-    comment = serializers.CharField(max_length=50)
+class BackCallSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=50)
+    phone = serializers.CharField(max_length=13)
+    email = serializers.EmailField()
+    message = serializers.CharField(max_length=100, default=None)
     datetime = serializers.DateField()
-    published = serializers.BooleanField(default=False)

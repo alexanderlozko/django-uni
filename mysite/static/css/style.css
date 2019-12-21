@@ -837,3 +837,7 @@ div.scrollup {
 div.scrollup:hover {
   background-color: #000; /* цвет заднего фона при наведении */
 }
+
+.text-in-profile{
+    text-align: center;
+}

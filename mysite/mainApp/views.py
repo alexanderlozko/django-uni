@@ -7,13 +7,13 @@ from .models import Comment, Order, BackCall, Category
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib import messages
-from .serializers import CommentSerializer
+from .serializers import BackCallSerializer
 
-class CommentView(APIView):
+class BackCallView(APIView):
     def get(self, request):
-        comments = Comment.objects.all()
-        serializer = CommentSerializer(comments, many=True)
-        return Response({"comments": serializer.data})
+        backcall = BackCall.objects.all()
+        serializer = BackCallSerializer(backcall, many=True)
+        return Response({"backcall": serializer.data})
 
 def index(request):
     comments = Comment.objects.filter(published=True).order_by('-datetime')
@@ -23,7 +23,7 @@ def index(request):
 def profile(request):
     response = requests.get('http://api.ipstack.com/check?access_key=5f76bbb6c812076967c64cbde6084147')
     geodata = response.json()
-    amount = Comment.objects.all().count()
+    amount = BackCall.objects.all().count()
     return render(request, 'registration/profile.html', {
         'ip': geodata['ip'],
         'country': geodata['country_name'],
@@ -55,7 +55,6 @@ def user_logout(request):
     logout(request)
     return redirect('home')
 
-
 def add_ajax(request):
     if request.is_ajax():
         first_text = 'Нашим клиентам мы гарантируем отличное качество обслуживания, короткие сроки изготовления заказа, высокий уровень профессионализма. '
@@ -69,7 +68,7 @@ def add_ajax(request):
         raise Http404
 
 def aboutus(request):
-    comments = Comment.objects.filter(published=True)
+    comments = Comment.objects.filter(published=True).order_by('-datetime')
     return render(request, 'about.html', {'comments':comments})
 
 def contact(request):
@@ -94,30 +93,11 @@ def comment(request):
 
     return render(request, 'comment.html', {'form': form})
 
-# def comment(request):
-#     comment = Comment(name=request.POST['name'],message=request.POST['message'])
-#     comment.save()
-#     return redirect('thanks_for_the_comment')
-
 def service(request):
     return render(request, 'service.html')
 
 def order_online(request):
     return render(request, 'order_online.html')
-
-def order(request):
-    order = Order(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'] , message=request.POST['message'] )
-    order.save()
-    return redirect('thanks')
-
-# def backcall(request):
-#     backcall = BackCall(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'],
-#                   message=request.POST['message'])
-#     backcall.save()
-#     return redirect('thanks')
-
-def leave_comment(request):
-    return redirect('thanks_for_the_comment')
 
 def thanks_for_the_comment(request):
     return render(request, 'thanks_for_the_comment.html')
