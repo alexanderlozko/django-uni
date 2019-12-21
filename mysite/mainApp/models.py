@@ -17,8 +17,8 @@ class Category(models.Model):
         return self.category
 
 class Comment(models.Model):
-    author = models.CharField(max_length=50)
-    comment = models.TextField(max_length=100)
+    name = models.CharField(max_length=50)
+    message = models.TextField(max_length=100)
     published = models.BooleanField(default=False)
     datetime = models.DateField(auto_now_add=True)
 

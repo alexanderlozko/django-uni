@@ -73,23 +73,31 @@ def aboutus(request):
     return render(request, 'about.html', {'comments':comments})
 
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == 'POST':
+        form = BackCallForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('thanks')
+    else:
+        form = BackCallForm()
 
-# def comment(request):
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('thanks_for_the_comment')
-#     else:
-#         form = CommentForm()
-#
-#     return render(request, 'comment.html', {'form': form})
+    return render(request, 'contact.html', {'form': form})
 
 def comment(request):
-    comment = Comment(author=request.POST['name'],message=request.POST['message'])
-    comment.save()
-    return redirect('thanks_for_the_comment')
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('thanks_for_the_comment')
+    else:
+        form = CommentForm()
+
+    return render(request, 'comment.html', {'form': form})
+
+# def comment(request):
+#     comment = Comment(name=request.POST['name'],message=request.POST['message'])
+#     comment.save()
+#     return redirect('thanks_for_the_comment')
 
 def service(request):
     return render(request, 'service.html')
@@ -102,14 +110,13 @@ def order(request):
     order.save()
     return redirect('thanks')
 
-def backcall(request):
-    backcall = BackCall(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'],
-                  message=request.POST['message'])
-    backcall.save()
-    return redirect('thanks')
+# def backcall(request):
+#     backcall = BackCall(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'],
+#                   message=request.POST['message'])
+#     backcall.save()
+#     return redirect('thanks')
 
 def leave_comment(request):
-
     return redirect('thanks_for_the_comment')
 
 def thanks_for_the_comment(request):

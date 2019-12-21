@@ -28,12 +28,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12">
-                <form id="contact-form" class="contact__form" method="POST" action=" ">
+                <form id="contact-form" class="contact__form" method="POST" action="{% url 'leave_comment' %}">
 
                     {% csrf_token %}
                     <span class="text-color">Оставить отзыв</span>
                     <h3 class="text-md mb-4">Напишите, что Вы думаете о нас...</h3>
-                    {{ form.as_p }}
+                    {% for field in form %}
+
+                    {{ field }}
+
+                    {% endfor %}
                     <button class="btn btn-main" name="submit" type="submit">Оставить отзыв</button>
                 </form>
             </div>

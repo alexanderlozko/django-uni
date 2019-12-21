@@ -4,15 +4,15 @@ from .models import Comment, BackCall, Category, Order
 
 @admin.register(BackCall)
 class BackCallAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'email', 'message', 'datetime', 'datetime')
+    list_display = ('name', 'phone', 'email', 'message', 'datetime')
     list_filter = ('datetime',)
     search_fields = ('name', 'phone', 'email', 'message', 'datetime')
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'comment', 'datetime', 'published')
+    list_display = ('name', 'message', 'datetime', 'published')
     list_filter = ('datetime',)
-    search_fields = ('author', 'comment')
+    search_fields = ('name', 'message')
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

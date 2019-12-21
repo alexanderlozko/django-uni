@@ -29,23 +29,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12">
-                 <form id="contact-form" class="contact__form" method="POST" action="{% url 'backcall' %}">
+                 <form id="contact-form" class="contact__form" method="POST" action=" ">
 
                     {% csrf_token %}
                     <span class="text-color">Отправить письмо</span>
                     <h3 class="text-md mb-4">Заказать обратный звонок или задать вопрос</h3>
-                    <div class="form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Имя">
-                    </div>
-                     <div class="form-group">
-                       <input type="tel" name="phone" class="form-control" placeholder="Телефон (+380)"  pattern="[\+][3][8][0]\d{9}" minlength="13" maxlength="13" />
-                    </div>
-                    <div class="form-group">
-                        <input name="email" type="email" class="form-control" placeholder="Почта">
-                    </div>
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" class="form-control" rows="4" placeholder="Ваше письмо"></textarea>
-                    </div>
+                     {% for field in form %}
+
+                    {{ field }}
+
+                    {% endfor %}
                     <button class="btn btn-main" name="submit" type="submit">Отправить письмо</button>
                 </form>
             </div>
