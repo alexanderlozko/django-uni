@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 import requests
 from django.contrib.auth import authenticate, login, logout
 from .forms import CommentForm, BackCallForm, LoginForm
-from .models import Comment, Order, BackCall
+from .models import Comment, Order, BackCall, Category
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib import messages
@@ -75,8 +75,21 @@ def aboutus(request):
 def contact(request):
     return render(request, 'contact.html')
 
+# def comment(request):
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('thanks_for_the_comment')
+#     else:
+#         form = CommentForm()
+#
+#     return render(request, 'comment.html', {'form': form})
+
 def comment(request):
-    return render(request, 'comment.html')
+    comment = Comment(author=request.POST['name'],message=request.POST['message'])
+    comment.save()
+    return redirect('thanks_for_the_comment')
 
 def service(request):
     return render(request, 'service.html')
@@ -90,13 +103,13 @@ def order(request):
     return redirect('thanks')
 
 def backcall(request):
-    backcall = BackCall(name = request.POST['name'], phone = request.POST['phone'], email=request.POST['email'] , message = request.POST['message'])
+    backcall = BackCall(name=request.POST['name'], phone=request.POST['phone'], email=request.POST['email'],
+                  message=request.POST['message'])
     backcall.save()
     return redirect('thanks')
 
 def leave_comment(request):
-    comment = Comment(author=request.POST['name'], comment=request.POST['message'])
-    comment.save()
+
     return redirect('thanks_for_the_comment')
 
 def thanks_for_the_comment(request):

@@ -10,6 +10,12 @@ class BackCall(models.Model):
     def __str__(self):
         return self.phone
 
+class Category(models.Model):
+    category = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.category
+
 class Comment(models.Model):
     author = models.CharField(max_length=50)
     comment = models.TextField(max_length=100)
@@ -18,12 +24,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
-
-class Category(models.Model):
-    category = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.category
 
 def user_directory_path(email, filename):
     return 'user_{0}/{1}'.format(email, filename)
