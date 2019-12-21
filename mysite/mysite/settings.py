@@ -7,11 +7,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
-SECRET_KEY = ')i3#1*e!hu57*58ph6v2n8xon8x#1@eaz(&0(1(yycyd=p1#j4'
+#SECRET_KEY = ')i3#1*e!hu57*58ph6v2n8xon8x#1@eaz(&0(1(yycyd=p1#j4'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', ')i3#1*e!hu57*58ph6v2n8xon8x#1@eaz(&0(1(yycyd=p1#j4')
 
-
-DEBUG = True
-
+#DEBUG = True
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = []
 INTERNAL_IPS = ['127.0.0.1',]
@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -132,3 +133,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
